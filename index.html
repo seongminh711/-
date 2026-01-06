@@ -179,21 +179,23 @@
     </section>
 
     <section id="price" class="section">
-      <h3>가격 안내</h3>
-      <p class="muted">아래는 예시입니다. 실제는 차종/상태/부품 등급에 따라 달라집니다.</p>
-      <div class="card">
-        <table class="table">
-          <thead>
-            <tr><th>항목</th><th>범위(예시)</th><th>비고</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>점화플러그 교체</td><td>₩xx,xxx ~</td><td>차종/개수에 따라</td></tr>
-            <tr><td>에어컨 필터 교체</td><td>₩xx,xxx ~</td><td>필터 등급 선택</td></tr>
-            <tr><td>브레이크 패드</td><td>₩xx,xxx ~</td><td>전/후, 브랜드</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+  <h3>가격 안내</h3>
+  <p class="muted">아래는 예시입니다. 실제는 차종/상태/부품 등급에 따라 달라집니다.</p>
+
+  <div class="price-top">
+    <input id="priceSearch" class="input" type="text" placeholder="예: 점화플러그, 브레이크, 엔진오일..." />
+    <div class="price-hint tiny muted">※ 좌우로 넘겨서 항목을 더 볼 수 있어요.</div>
+  </div>
+
+  <div class="price-row" id="priceRow">
+    <!-- 카드들: JS로 생성 -->
+  </div>
+
+  <div class="card tiny muted" style="margin-top:12px;">
+    <b>안내</b> · 공임/부품 등급/차종에 따라 변동됩니다. · 정확한 금액은 진단 후 안내드립니다.
+  </div>
+</section>
+
 
     <section id="reserve" class="section">
       <h3>예약 / 문의</h3>
