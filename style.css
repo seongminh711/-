@@ -23,8 +23,31 @@ a { color:inherit; text-decoration:none; }
 
 .list { margin: 10px 0 0; padding-left: 18px; }
 .grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:10px; margin: 12px 0; }
-.tile { padding:14px; border-radius:14px; border:1px solid var(--bd); background:#fff; cursor:pointer; text-align:left; font-weight:600; }
-.tile:hover { background: #f3f4f6; }
+/* 증상 선택 버튼 */
+.tile {
+  padding: 16px;
+  border-radius: 14px;
+  border: 2px solid #111827; /* 🔥 검은색 테두리 */
+  background: #ffffff;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 700;
+  transition: all 0.15s ease;
+}
+
+/* 마우스 올렸을 때 */
+.tile:hover {
+  background: #f9fafb;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+/* 클릭된 느낌 (선택 상태) */
+.tile.active {
+  background: #111827;
+  color: #ffffff;
+}
+
 
 .two { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:12px; }
 .table { width:100%; border-collapse: collapse; }
