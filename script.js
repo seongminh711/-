@@ -3,6 +3,29 @@ function showInfo(title, text) {
   document.getElementById("infoText").textContent = text;
   document.getElementById("infoBox").scrollIntoView({ behavior: "smooth", block: "center" });
 }
+
+// ===============================
+// ✅ 문의 버튼 → 구글폼 이동 설정
+// ===============================
+const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdf__223IKg_fh_fp1dadeprO2d1t6IuSOj3DINOXRbDyLIdg/viewform?fbzx=1944460443869204952";
+
+/*
+(선택) 구글폼에 '문의 항목' 질문이 있고 entry 키를 알고 있으면 입력하면
+문의 누른 항목명이 폼에 자동 입력됨.
+예: const FORM_ENTRY_KEY = "entry.1234567890";
+*/
+const FORM_ENTRY_KEY = ""; // 모르면 빈칸 그대로
+
+function openInquiryForm(itemName) {
+  let url = FORM_URL;
+
+  if (FORM_ENTRY_KEY) {
+    url += `?${FORM_ENTRY_KEY}=` + encodeURIComponent(itemName);
+  }
+
+  window.open(url, "_blank");
+}
+
 // ----------------------------
 // Price cards (horizontal + search)
 // ----------------------------
@@ -45,7 +68,8 @@ function renderPriceCards(items) {
       <div class="price-note">${it.note}</div>
       <div class="price-actions">
         <a class="mini" href="${it.link}">상세</a>
-        <a class="mini primary" href="#reserve">문의</a>
+        <!-- ✅ 문의: 구글폼으로 이동 (항목명 전달 가능) -->
+        <button class="mini primary inquiry-btn" type="button" data-item="${it.name}">문의</button>
       </div>
     `;
     row.appendChild(card);
@@ -58,7 +82,7 @@ function renderPriceCards(items) {
       <div class="price-title">검색 결과가 없어요</div>
       <div class="price-note">다른 키워드로 검색해보세요. (예: 엔진오일, 브레이크, 배터리)</div>
       <div class="price-actions">
-        <a class="mini primary" href="#reserve">문의하기</a>
+        <button class="mini primary inquiry-btn" type="button" data-item="가격 문의(기타)">문의하기</button>
       </div>
     `;
     row.appendChild(empty);
@@ -79,5 +103,14 @@ function setupPriceSearch() {
     renderPriceCards(filtered);
   });
 }
+
+// ✅ 이벤트 위임: 가격카드는 다시 렌더링되므로 document에서 잡아야 안전함
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".inquiry-btn");
+  if (!btn) return;
+
+  const itemName = btn.dataset.item || "문의";
+  openInquiryForm(itemName);
+});
 
 document.addEventListener("DOMContentLoaded", setupPriceSearch);
