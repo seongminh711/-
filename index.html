@@ -58,12 +58,10 @@
       <p class="muted">아래에서 증상을 고르면 관련 부품/설명으로 이어집니다.</p>
 
       <div class="grid">
-        <!-- 경고등(계기판) -->
         <button class="tile" onclick="showInfo('경고등(계기판) 점등', '엔진체크등 뿐 아니라 타이어 공기압(TPMS), ABS/ESC, 에어백, 배터리(충전), 냉각수 온도 경고 등 원인이 다양합니다. 우선 어떤 경고등인지 확인 → 스캔/전압/센서/퓨즈/배선부터 점검합니다.')">
           경고등(계기판)
         </button>
 
-        <!-- 시동/떨림 -->
         <button class="tile" onclick="showInfo('시동 지연 / 시동불량', '배터리 전압·단자, 스타터 모터, 연료 압력, 점화(플러그/코일), 크랭크/캠 센서 순으로 확인합니다. 추운 날/장거리 후 등 상황도 같이 체크합니다.')">
           시동 지연
         </button>
@@ -72,7 +70,6 @@
           떨림/출력저하
         </button>
 
-        <!-- 브레이크 -->
         <button class="tile" onclick="showInfo('브레이크 소음', '패드/디스크 마모, 캘리퍼 작동, 이물질(돌/먼지), 방청 코팅 잔여, 로터 편마모 여부를 확인합니다. ‘끼익/드드득’ 소리 종류도 힌트가 됩니다.')">
           브레이크 소음
         </button>
@@ -81,7 +78,6 @@
           브레이크 밀림
         </button>
 
-        <!-- 에어컨 -->
         <button class="tile" onclick="showInfo('에어컨 냄새', '에어컨 필터, 에바포레이터 오염, 배수 라인 막힘(곰팡이), 송풍 덕트 오염을 확인합니다. ‘비 오는 날/켜자마자’ 냄새면 배수·에바 쪽 가능성이 큽니다.')">
           에어컨 냄새
         </button>
@@ -90,7 +86,6 @@
           풍량 약함
         </button>
 
-        <!-- 하체/조향 -->
         <button class="tile" onclick="showInfo('핸들 떨림(고속)', '휠 밸런스, 타이어 편마모/변형, 얼라인먼트, 허브 베어링, 로워암/타이로드 유격을 점검합니다. 속도 구간(80~120km/h 등)을 알려주면 진단이 빨라집니다.')">
           핸들 떨림
         </button>
@@ -99,7 +94,6 @@
           쏠림(얼라인)
         </button>
 
-        <!-- 타이어/누유 -->
         <button class="tile" onclick="showInfo('타이어 공기압 경고 / 자주 빠짐', 'TPMS 센서 배터리, 밸브/비드 누설, 펑크(못/나사), 휠 크랙 여부를 확인합니다. 공기압 경고등이 ‘깜빡임’인지 ‘고정 점등’인지도 중요합니다.')">
           공기압 경고
         </button>
@@ -108,7 +102,6 @@
           누유/오일자국
         </button>
 
-        <!-- 소음 -->
         <button class="tile" onclick="showInfo('하체 소음(덜컹/삐걱)', '스테빌 링크, 로워암 부싱, 쇼크/마운트, 타이로드, 허브 베어링 유격을 확인합니다. 방지턱/회전/가속 시 상황에 따라 원인이 달라집니다.')">
           하체 소음
         </button>
@@ -179,40 +172,50 @@
     </section>
 
     <section id="price" class="section">
-  <h3>가격 안내</h3>
-  <p class="muted">아래는 예시입니다. 실제는 차종/상태/부품 등급에 따라 달라집니다.</p>
+      <h3>가격 안내</h3>
+      <p class="muted">아래는 예시입니다. 실제는 차종/상태/부품 등급에 따라 달라집니다.</p>
 
-  <div class="price-top">
-    <input id="priceSearch" class="input" type="text" placeholder="예: 점화플러그, 브레이크, 엔진오일..." />
-    <div class="price-hint tiny muted">※ 좌우로 넘겨서 항목을 더 볼 수 있어요.</div>
-  </div>
+      <div class="price-top">
+        <input id="priceSearch" class="input" type="text" placeholder="예: 점화플러그, 브레이크, 엔진오일..." />
+        <div class="price-hint tiny muted">※ 좌우로 넘겨서 항목을 더 볼 수 있어요.</div>
+      </div>
 
-  <div class="price-row" id="priceRow">
-    <!-- 카드들: JS로 생성 -->
-  </div>
+      <div class="price-row" id="priceRow">
+        <!-- 카드들: JS로 생성 -->
+      </div>
 
-  <div class="card tiny muted" style="margin-top:12px;">
-    <b>안내</b> · 공임/부품 등급/차종에 따라 변동됩니다. · 정확한 금액은 진단 후 안내드립니다.
-  </div>
-</section>
+      <div class="card tiny muted" style="margin-top:12px;">
+        <b>안내</b> · 공임/부품 등급/차종에 따라 변동됩니다. · 정확한 금액은 진단 후 안내드립니다.
+      </div>
+    </section>
 
-
+    <!-- ✅ 예약 섹션: 카드 2장 구조로 정리 -->
     <section id="reserve" class="section">
       <h3>예약 / 문의</h3>
+
+      <!-- 온라인 예약 카드 -->
+      <div class="card reserve-box">
+        <div class="reserve-head">
+          <div>
+            <h4>📝 온라인 예약(자동 접수)</h4>
+            <p class="muted small">
+              폼으로 예약을 남기면 <b>Google Sheets(엑셀)</b>에 자동으로 정리됩니다.
+            </p>
+          </div>
+          <a class="btn primary"
+             id="reserveFormBtn"
+             href="https://forms.gle/여기에_구글폼링크"
+             target="_blank" rel="noopener">
+            예약 폼 작성하기
+          </a>
+        </div>
+      </div>
+
+      <!-- 빠른 문의 카드 -->
       <div class="card">
         <p class="muted">전화·문자·카톡·지도 연결로 빠르게 안내드립니다.</p>
-<div class="card" style="margin:12px 0;">
-      <h4 style="margin:0 0 8px 0;">📝 온라인 예약(자동 접수)</h4>
-      <p class="muted small" style="margin:0 0 10px 0;">
-        폼으로 예약을 남기면 <b>Google Sheets(엑셀)</b>에 자동으로 정리됩니다.
-      </p>
-      <a class="btn primary" href="https://forms.gle/여기에_구글폼링크"
-         target="_blank" rel="noopener">
-        예약 폼 작성하기
-      </a>
-    </div>
-        
-        <div class="cta-grid">
+
+        <div class="cta-grid" style="margin-top:12px;">
           <a class="cta" href="tel:010-0000-0000">📞 전화하기</a>
           <a class="cta" href="sms:010-0000-0000">💬 문자하기</a>
           <a class="cta" href="https://open.kakao.com/o/여기에링크"
@@ -221,7 +224,7 @@
              target="_blank" rel="noopener">📍 지도 보기</a>
         </div>
 
-        <p class="tiny muted">
+        <p class="tiny muted" style="margin-top:10px;">
           ※ 작업 중에는 답변이 지연될 수 있습니다. 긴급 시 전화가 가장 빠릅니다.
         </p>
       </div>
@@ -231,6 +234,47 @@
   <footer class="wrap footer">
     <p class="tiny muted">© Auto ACE Hub. All rights reserved.</p>
   </footer>
+
+  <script>
+    // ===============================
+    // ✅ 여기만 바꾸면 끝!
+    // ===============================
+    const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdf__223IKg_fh_fp1dadeprO2d1t6IuSOj3DINOXRbDyLIdg/viewform?fbzx=1944460443869204952";
+
+    // (선택) 구글폼에 '문의 항목' 질문이 있고 entry 키를 알고 있으면 넣기
+    // 예: const FORM_ENTRY_KEY = "entry.1234567890";
+    const FORM_ENTRY_KEY = "";
+
+    // 예약 섹션 버튼 링크도 FORM_URL로 동기화
+    const reserveBtn = document.getElementById("reserveFormBtn");
+    if (reserveBtn) reserveBtn.href = FORM_URL;
+
+    // ===============================
+    // ✅ 가격 카드 문의 버튼을 폼으로 보내기
+    //  - JS로 생성되는 버튼이라 "이벤트 위임"으로 처리
+    //  - class="inquiry-btn" 또는 data-action="inquiry" 를 가진 것 모두 처리
+    // ===============================
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".inquiry-btn, [data-action='inquiry']");
+      if (!btn) return;
+
+      // 어떤 항목인지 받아오기 (data-item 우선)
+      const item =
+        btn.dataset.item ||
+        btn.getAttribute("data-item") ||
+        btn.closest(".price-card")?.querySelector(".price-title")?.textContent?.trim() ||
+        "문의";
+
+      let url = FORM_URL;
+
+      // entry 키가 있으면 항목 자동 전달
+      if (FORM_ENTRY_KEY) {
+        url += `?${FORM_ENTRY_KEY}=` + encodeURIComponent(item);
+      }
+
+      window.open(url, "_blank");
+    });
+  </script>
 
   <script src="script.js"></script>
 </body>
